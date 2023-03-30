@@ -118,8 +118,8 @@ jobs:
         uses: renovatebot/github-action@v36.0.0
         with:
           renovate-version: 35.0.0
-          # token: ${{ secrets.RENOVATE_TOKEN }}
-          token: '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'
+          token: ${{ env.RENOVATE_TOKEN }}
+          # token: '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'
 
 
 # https://github.com/fossas/fossa-action fossa still need to register for token
