@@ -120,8 +120,6 @@ jobs:
           api-key: ${{secrets.fossaApiKey}}
           run-tests: true
 
-
-
 # #https://github.com/renovatebot/github-action need to create token on github
   # renovate:
   #   runs-on: ubuntu-latest
