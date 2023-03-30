@@ -138,7 +138,7 @@ jobs:
       - name: fossa scan
         uses: fossas/fossa-action@main # Use a specific version if locking is preferred
         with:
-          api-key: ${{vars.FOSSAAPIKEY}}
+          api-key: ${{secrets.FOSSAAPIKEY}}
           run-tests: true
 
 
