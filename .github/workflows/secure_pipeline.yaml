@@ -106,34 +106,34 @@ jobs:
   #         path: reports
 
 
+
+
+#https://github.com/renovatebot/github-action need to create token on github
+  renovate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3.3.0
+      - name: Self-hosted Renovate
+        uses: renovatebot/github-action@v36.0.0
+        with:
+          renovate-version: 35.0.0
+          token: ${{ secrets.RENOVATE_TOKEN }}
+
+
 # https://github.com/fossas/fossa-action fossa still need to register for token
 # https://app.fossa.com/account/settings/integrations/github
 # need to import the project in fossa website & grand app access from github setting
-  fossa-scan:
-    runs-on: ubuntu-latest
-    steps:
-      - name: checkout
-        uses: actions/checkout@v3
-      - name: fossa scan
-        uses: fossas/fossa-action@main # Use a specific version if locking is preferred
-        with:
-          api-key: ${{secrets.fossaApiKey}}
-          run-tests: true
-
-# #https://github.com/renovatebot/github-action need to create token on github
-  # renovate:
+  # fossa-scan:
   #   runs-on: ubuntu-latest
   #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v3.3.0
-  #     - name: Self-hosted Renovate
-  #       uses: renovatebot/github-action@v36.0.0
+  #     - name: checkout
+  #       uses: actions/checkout@v3
+  #     - name: fossa scan
+  #       uses: fossas/fossa-action@main # Use a specific version if locking is preferred
   #       with:
-  #         renovate-version: 35.0.0
-  #         token: ${{ secrets.RENOVATE_TOKEN }}
-
-
-
+  #         api-key: ${{secrets.fossaApiKey}}
+  #         run-tests: true
 
 
 
