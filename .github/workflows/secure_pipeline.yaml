@@ -108,6 +108,7 @@ jobs:
 
 # https://github.com/fossas/fossa-action fossa still need to register for token
 # https://app.fossa.com/account/settings/integrations/github
+# need to import the project in fossa website
   fossa-scan:
     runs-on: ubuntu-latest
     steps:
