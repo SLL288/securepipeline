@@ -127,9 +127,17 @@ jobs:
 
 
 
-
-
-
+  # https://github.com/BlackDuckCoPilot/example-pip-githubactions
+  Black-duck:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Java (CoPilot)
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+      - name: Upload to CoPilot
+            if: github.event_name == 'push' || github.event_name == 'pull_request'
+          run: bash <(curl -s https://copilot-test.blackducksoftware.com/ci/githubactions/scripts/upload)
 
 
 
@@ -137,16 +145,16 @@ jobs:
 # https://github.com/fossas/fossa-action fossa still need to register for token
 # https://app.fossa.com/account/settings/integrations/github
 # need to import the project in fossa website & grand app access from github setting
-  fossa-scan:
-    runs-on: ubuntu-latest
-    steps:
-      - name: checkout
-        uses: actions/checkout@v3
-      - name: fossa scan
-        uses: fossas/fossa-action@main # Use a specific version if locking is preferred
-        with:
-          api-key: ${{ vars.FOSSAAPIKEY }}
-          run-tests: true
+  # fossa-scan:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: checkout
+  #       uses: actions/checkout@v3
+  #     - name: fossa scan
+  #       uses: fossas/fossa-action@main # Use a specific version if locking is preferred
+  #       with:
+  #         api-key: ${{ vars.FOSSAAPIKEY }}
+  #         run-tests: true
 
 
 
