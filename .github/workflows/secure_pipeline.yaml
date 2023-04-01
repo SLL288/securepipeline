@@ -181,7 +181,7 @@ jobs:
         env:                                            
           # SC_CONTROLLER_URL: ${{ secrets.SC_CONTROLLER_URL }}
           SC_CONTROLLER_URL: 'https://app2727.azurewebsites.net/jpetstore'
-          SSC_UPLOAD_TOKEN: ${{ secrets.SSC_UPLOAD_TOKEN }}
+          SSC_UPLOAD_TOKEN: ${{ secrets.FORTIFYTOKEN }}
           APPLICATION: "My Application"
           VERSION: "1.0"
           # BUILD_OPTS: "-bt mvn"
