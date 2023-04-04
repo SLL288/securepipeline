@@ -124,25 +124,6 @@ jobs:
 
 
 
-
-
-
-  # https://github.com/BlackDuckCoPilot/example-pip-githubactions
-  Black-duck:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Set up Java (CoPilot)
-        uses: actions/setup-java@v1
-        with:
-          java-version: 1.8
-      - name: Upload to CoPilot
-          if: github.event_name == 'push' || github.event_name == 'pull_request'
-          with:
-            run: bash <(curl -s https://copilot-test.blackducksoftware.com/ci/githubactions/scripts/upload)
-
-
-
-
 # https://github.com/fossas/fossa-action fossa still need to register for token
 # https://app.fossa.com/account/settings/integrations/github
 # need to import the project in fossa website & grand app access from github setting
@@ -156,6 +137,37 @@ jobs:
   #       with:
   #         api-key: ${{ vars.FOSSAAPIKEY }}
   #         run-tests: true
+
+
+  TruffleHog:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: TruffleHog OSS
+        uses: trufflesecurity/trufflehog@main
+        with:
+          path: ./
+          base: ${{ github.event.repository.default_branch }}
+          head: HEAD
+          extra_args: --debug --only-verified
+
+
+  # https://github.com/marketplace/actions/black-duck-scanner
+  # Blackduck:
+  #   name: BlackDuck
+  #   runs-on: self-hosted
+  #   steps:
+  #     - uses: philips-labs/blackduck-scanner-action@v1
+  #       with:
+  #         token: ${{ secrets.BLACKDUCK_TOKEN }}
+  #         projectName: Your project name
+  #         versionPrefix: You version prefix
+  #         url: https://your.black.duck.swamp/
+  #         sourcePath: /code
+  #         extraArgs: --detect.yarn.prod.only=true
 
 
 
